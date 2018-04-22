@@ -1,17 +1,29 @@
 
-var pacienteTr = document.createElement("tr");
+var solicitacaoTr = document.createElement("tr");
+/*
 var solicitacao = {
         descricao : "mouse",
         data : "21/03/1992",
         justificativa : "porque eu quero"
 }
+*/
 
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "localhost:3000/requisicao"); //tipo de requisição + end.
+xhr.addEventListener("load", function(){
+
+    var pacientes = JSON.parse(xhr.responseText);
+    pacientes.forEach(function(paciente) {
+        addPacienteNaTabela(paciente);
+    });
+})
+        
 addSolicitacaoNaTabela(solicitacao)
 
 function addSolicitacaoNaTabela(){
     var solicitacaoTr = montaTr(solicitacao);
     var tabela = document.querySelector("#tabela-solicitacao");
-    tabela.appendChild(pacienteTr);
+    tabela.appendChild(solicitacaoTr);
 }
 
 function montaTr(solicitacao){
