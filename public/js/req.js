@@ -17,7 +17,8 @@ xhr.addEventListener("load", function(){
         addPacienteNaTabela(paciente);
     });
 })
-        
+     
+
 addSolicitacaoNaTabela(solicitacao)
 
 function addSolicitacaoNaTabela(){
