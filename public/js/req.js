@@ -1,4 +1,3 @@
-
 var solicitacaoTr = document.createElement("tr");
 /*
 var solicitacao = {
@@ -7,21 +6,19 @@ var solicitacao = {
         justificativa : "porque eu quero"
 }
 */
-
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "localhost:3000/requisicao"); //tipo de requisição + end.
+xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
-
-    var pacientes = JSON.parse(xhr.responseText);
-    pacientes.forEach(function(paciente) {
-        addPacienteNaTabela(paciente);
+    var sol = JSON.parse(xhr.responseText);
+    sol.forEach(function(solicitacao) {
+        console.log(solicitacao)
+        addSolicitacaoNaTabela(solicitacao);
     });
 })
-     
+xhr.send();
+//addSolicitacaoNaTabela(solicitacao)
 
-addSolicitacaoNaTabela(solicitacao)
-
-function addSolicitacaoNaTabela(){
+function addSolicitacaoNaTabela(solicitacao){
     var solicitacaoTr = montaTr(solicitacao);
     var tabela = document.querySelector("#tabela-solicitacao");
     tabela.appendChild(solicitacaoTr);
@@ -31,9 +28,11 @@ function montaTr(solicitacao){
     var solicitacaoTr = document.createElement("tr");
     solicitacaoTr.classList.add("solicitacao");
  
-    pacienteTr.appendChild(montaTd(solicitacao.descricao, "info-descricao"));
-    pacienteTr.appendChild(montaTd(solicitacao.data,    "info-data"));
-    pacienteTr.appendChild(montaTd(solicitacao.justificativa,  "info-justificativa"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.nome, "info-descricao"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.data,    "info-data"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.status,  "info-status"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.solicitante,  "info-solicitante"));
+
 
     return solicitacaoTr;
  }
