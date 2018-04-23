@@ -15,12 +15,21 @@ app.use("/", exampleRouter);
 
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
+/*
 models.sequelize.sync({force:true}).then(() => {
 	app.listen(3000, function() {
 		console.log("The Server Has Started!");
 	});
 });
+*/
+var requisicaoRouter = require("./routes/requisicao")
+
+app.listen(3000, function() {
+	console.log("The Server Has Started!");
+});
 
 app.get("/", function(req, res) {
 	res.render("index");
 });
+
+app.use("/requisicao",requisicaoRouter)
