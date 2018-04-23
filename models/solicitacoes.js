@@ -14,7 +14,7 @@ module.exports = function(sequelize , DataTypes){
         data: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
-        }
+        },
     }, {timestamps: false});
 
     solicitacoes.associate = associate;
