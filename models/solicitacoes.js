@@ -8,9 +8,10 @@ function associate(models){
 
 module.exports = function(sequelize , DataTypes){
     var solicitacoes = sequelize.define('solicitacoes', {
-        descricao: DataTypes.STRING(255),
+        nome_produto : DataTypes.STRING(50),
+        descricao: DataTypes.TEXT(),
         quantidade: DataTypes.INTEGER,
-        justificativa: DataTypes.STRING(255),
+        justificativa: DataTypes.TEXT(),
         data: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
