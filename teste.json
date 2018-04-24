@@ -7,7 +7,7 @@
      "solicitante": "Dougras Abreu",
      "Descricao": "Derivado da palavra rato em ingles",
      "Justificativa": "Sempre util",
-      "orcamento": "21.30"
+      "orcamento": "21.30",
   },
   {
      "nome" : "coelho",
@@ -17,6 +17,6 @@
      "solicitante": "Daniel Venturine",
      "Descricao": "Animal que pula e da chocolate",
      "Justificativa": "O daniel é meio idiota",
-      "orcamento": "55.30"
+      "orcamento": "55.30",
   } 
 ]
