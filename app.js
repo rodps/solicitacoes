@@ -1,35 +1,26 @@
-var express            = require('express'),
-	app                = express(),
-	models             = require('./models'),
-	bodyParser         = require("body-parser");
-	
-var exampleRouter = require("./routes/example");
+const express = require("express");
+const app = express();
+const models = require("./models");
+const path = require("path");
 
-// configuracoes
-app.use(bodyParser.urlencoded({extended: true}));
+const bodyParser = require("body-parser");
+
+const homeRouter = require("./routes/home");
+const userRouter = require("./routes/user");
+
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
+app.set("views", path.join(__dirname, "views"));
 
-//rotas
-app.use("/", exampleRouter);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//Cria o banco de dados
-//{force:true} Drop tables se ja existirem
-/*
-models.sequelize.sync({force:true}).then(() => {
-	app.listen(3000, function() {
-		console.log("The Server Has Started!");
-	});
-});
-*/
-var requisicaoRouter = require("./routes/requisicao")
+app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(3000, function() {
-	console.log("The Server Has Started!");
+models.sequelize.sync().then(() => {
+  app.listen(3000, function() {
+    console.log("The Server Has Started!");
+  });
 });
 
-app.get("/", function(req, res) {
-	res.render("index");
-});
-
-app.use("/requisicao",requisicaoRouter)
+app.use("/", homeRouter);
+app.use("/usuarios", userRouter);
