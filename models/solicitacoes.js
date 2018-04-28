@@ -8,14 +8,13 @@ function associate(models){
 
 module.exports = function(sequelize , DataTypes){
     var solicitacoes = sequelize.define('solicitacoes', {
-        nome_produto : DataTypes.STRING(50),
-        descricao: DataTypes.TEXT(),
+        descricao: DataTypes.STRING(255),
         quantidade: DataTypes.INTEGER,
-        justificativa: DataTypes.TEXT(),
+        justificativa: DataTypes.STRING(255),
         data: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
-        },
+        }
     }, {timestamps: false});
 
     solicitacoes.associate = associate;

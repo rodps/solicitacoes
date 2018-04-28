@@ -4,7 +4,6 @@ var express            = require('express'),
 	bodyParser         = require("body-parser");
 	
 var exampleRouter = require("./routes/example");
-var requisicaoRouter = require("./routes/requisicao");
 
 // configuracoes
 app.use(bodyParser.urlencoded({extended: true}));
@@ -13,12 +12,10 @@ app.use(express.static(__dirname + "/public"));
 
 //rotas
 app.use("/", exampleRouter);
-app.use("/requisicao", requisicaoRouter);
-
 
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
-models.sequelize.sync().then(() => {
+models.sequelize.sync({force:true}).then(() => {
 	app.listen(3000, function() {
 		console.log("The Server Has Started!");
 	});
@@ -27,4 +24,3 @@ models.sequelize.sync().then(() => {
 app.get("/", function(req, res) {
 	res.render("index");
 });
-
