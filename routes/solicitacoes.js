@@ -13,7 +13,7 @@ router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("solicitacoes/adicionar");
 });
 
-router.post("/adicionar", (req, res) => {
+router.post("/adicionar", isLoggedIn, (req, res) => {
   const solicitacao = {
     justificativa: req.body.justificativa,
     quantidade_produto: req.body.quantidade_produto,
