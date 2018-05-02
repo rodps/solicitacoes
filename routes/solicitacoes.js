@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
+const isLoggedIn = require("../middleware/index").isLoggedIn;
 
 router.get("/", isLoggedIn, (req, res) => {
   models.solicitacoes.findAll().then(allSolicitacoes => {
@@ -8,7 +9,7 @@ router.get("/", isLoggedIn, (req, res) => {
   });
 });
 
-router.get("/adicionar", (req, res) => {
+router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("solicitacoes/adicionar");
 });
 
