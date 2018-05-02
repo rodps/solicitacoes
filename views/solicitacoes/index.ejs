@@ -1,0 +1,39 @@
+<html>
+<header></header>
+<% include ../../views/partials/header %>
+
+  <body>
+    <% include ../../views/partials/nav-bar %>
+      <div class="container">
+        <h2>Solicitações</h2>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Justificativa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% _solicitacoes.forEach((solicitacao) => { %>
+              <tr>
+                <td>
+                  <%= solicitacao.produto.descricao %>
+                </td>
+                <td>
+                  <%= solicitacao.quantidade_produto %>
+                </td>
+                <td>
+                  <%= solicitacao.justificativa %>
+                </td>
+              </tr>
+              <% }); %>
+
+          </tbody>
+        </table>
+      </div>
+      <% include ../../views/partials/scripts %>
+  </body>
+
+</html>

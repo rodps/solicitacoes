@@ -1,0 +1,64 @@
+<html>
+<header></header>
+<% include ../../views/partials/header %>
+
+  <body>
+    <% include ../../views/partials/nav-bar %>
+      <div class="container">
+        <h2>Produtos</h2>
+
+        <div class="pull-right">
+          <a href="/produtos/adicionar" class="btn btn-success">Adicionar</a>
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Código SIORG</th>
+              <th>Descrição SIORG</th>
+              <th>Categoria</th>
+              <th>Condição</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% _produtos.forEach((produto) => { %>
+              <tr>
+                <td>
+                  <%= produto.nome %>
+                </td>
+                <td>
+                  <%= produto.cod_siorg %>
+                </td>
+                <td>
+                  <%= produto.descricao_siorg %>
+                </td>
+                <td>
+                  <%= produto.categoria %>
+                </td>
+                <td>
+                  <%= produto.condicao %>
+                </td>
+                <td>
+                  <a href="/produtos/<%= produto.id %>/remover" method="delete" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                  <a href="/produtos/<%= produto.id %>/editar" class="btn btn-primary">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </td>
+
+              </tr>
+              <% }); %>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <% include ../../views/partials/scripts %>
+  </body>
+
+</html>
