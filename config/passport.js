@@ -20,7 +20,7 @@ module.exports = function(user) {
   passportStrategies.localSignup = new LocalStrategy(
     {
       usernameField: "nome",
-      passwordField: "senha"
+      passwordField: "senha",
       passReqToCallback: true // allows us to pass back the entire request to the callback
     },
     function(req, name, password, done) {
