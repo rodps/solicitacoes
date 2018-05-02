@@ -1,19 +1,19 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
-const LoggedIn = require("../middleware/index");
+const isLoggedIn = require("../middleware/index").isLoggedIn;
 
-router.get("/", LoggedIn.isLoggedIn, (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
   models.produtos.findAll().then(allProdutos => {
     res.render("produtos/index", { _produtos: allProdutos });
   });
 });
 
-router.get("/adicionar", LoggedIn.isLoggedIn, (req, res) => {
+router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("produtos/adicionar");
 });
 
-router.post("/adicionar", LoggedIn.isLoggedIn, (req, res) => {
+router.post("/adicionar", isLoggedIn, (req, res) => {
   const produto = {
     nome: req.body.nome,
     cod_siorg: req.body.cod_siorg,
@@ -25,7 +25,7 @@ router.post("/adicionar", LoggedIn.isLoggedIn, (req, res) => {
   res.redirect("/produtos");
 });
 
-router.get("/:id/remover", LoggedIn.isLoggedIn, (req, res) => {
+router.get("/:id/remover", isLoggedIn, (req, res) => {
   models.produtos.destroy({
     where: {
       id: req.params.id
@@ -34,12 +34,12 @@ router.get("/:id/remover", LoggedIn.isLoggedIn, (req, res) => {
   res.redirect("/produtos");
 });
 
-router.get("/:id/editar", LoggedIn.isLoggedIn, (req, res) => {
+router.get("/:id/editar", isLoggedIn, (req, res) => {
   models.produtos.findById(req.params.id).then(_produto => {
     res.render("produtos/editar", { produto: _produto });
   });
 
-  router.post("/:id/editar", LoggedIn.isLoggedIn, (req, res) => {
+  router.post("/:id/editar", isLoggedIn, (req, res) => {
     models.produtos.find({ where: { id: req.params.id } }).then(_produto => {
       _produto.update({
         nome: req.body.nome,

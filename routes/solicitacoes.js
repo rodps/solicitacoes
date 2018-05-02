@@ -1,15 +1,15 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
-const LoggedIn = require("../middleware/index");
+const isLoggedIn = require("../middleware/index").isLoggedIn;
 
-router.get("/", LoggedIn.isLoggedIn, (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
   models.solicitacoes.findAll().then(allSolicitacoes => {
     res.render("solicitacoes/index", { _solicitacoes: allSolicitacoes });
   });
 });
 
-router.get("/adicionar", LoggedIn.isLoggedIn, (req, res) => {
+router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("solicitacoes/adicionar");
 });
 
