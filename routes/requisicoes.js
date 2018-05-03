@@ -19,15 +19,15 @@ router.get("/listar/orcamentos", function (req, res) {
 
 });
 
-router.get("/listar/solicitacoes",isLoggedInAdm ,function (req, res) {
+router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
 
     models.solicitacoes.findAll({
         include: [{
             model: models.usuarios,
             where: { id: Sequelize.col('usuario_id') }
         }],
-        where:{
-             [Op.or]: [{ status: "ABERTO" }, { status: "APROVADO" }, { status: "DESERTO" }]
+        where: {
+            [Op.or]: [{ status: "ABERTO" }, { status: "APROVADO" }, { status: "DESERTO" }]
         }
     }).then(solicitacoes => {
         res.send(solicitacoes);
@@ -35,53 +35,64 @@ router.get("/listar/solicitacoes",isLoggedInAdm ,function (req, res) {
 
 });
 
-router.get("/listar/solicitacoes/:id",isLoggedInAdm, function (req, res) {
-   const id = req.params.id;
-        
-    models.solicitacoes.findById(id).then(solicitacao =>{
+router.get("/listar/solicitacoes/:id", isLoggedInAdm, function (req, res) {
+    const id = req.params.id;
+
+    models.solicitacoes.findById(id).then(solicitacao => {
         if (solicitacao) {
-                res.status(200).json(solicitacao);
-            } else {
-                res.status(404).send('Solicitacao não encontrada.');
-            }
-        }).catch(ex => {
-            console.error(ex);
-            res.status(400).send('Não foi possível consultar a solicitacao.');
-        })
-        //res.send(solicitacao);
+            res.status(200).json(solicitacao);
+        } else {
+            res.status(404).send('Solicitacao não encontrada.');
+        }
+    }).catch(ex => {
+        console.error(ex);
+        res.status(400).send('Não foi possível consultar a solicitacao.');
+    })
+    //res.send(solicitacao);
 });
 
-router.post("/criar/requisicoes",isLoggedInAdm, function (req, res) {
+router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
     req.isAuthenticated();
     usuario_id = req.user.id;
-    models.requisicoes.create({usuario_id : usuario_id}).then((_requisicao) => {
-           let id_requisicao =_requisicao.numero;
-         //  console.log(id_requisicao)
-            let lista = []
-            req.body.solicitacoes.forEach(function(item) {
-                lista.push({
-                    requisicao_id:id_requisicao,
-                    solicitacao_id:item,   
-                })
-            });
-            models.solicitacao_requisicao.bulkCreate(lista).then(() => {
-                 res.status(201).send("Requisicão Criada");
-                 
-            }).catch( ex => {
-                 res.status(400).send('Não foi possível associar a solicitação com a requisicão ' +
+
+    models.requisicoes.create({ usuario_id: usuario_id }).then((_requisicao) => {
+        let id_requisicao = _requisicao.numero;
+        let lista = []
+        req.body.solicitacoes.forEach(function (item) {
+            lista.push({
+                requisicao_id: id_requisicao,
+                solicitacao_id: item,
+            })
+        });
+        models.solicitacao_requisicao.bulkCreate(lista).then(() => {
+            res.status(201).send("Requisicão Criada");
+
+        }).catch(ex => {
+            res.status(400).send('Não foi possível associar a solicitação com a requisicão ' +
                 'no banco de dados.');
-            })   
-        
-     }).catch(ex => {
+        })
+    }).catch(ex => {
         console.error(ex);
         res.status(400).send('Não foi possível incluir a requisicao ' +
             'no banco de dados.');
-     });
-    
-        
+    });
+    /*
+    req.body.solicitacoes.forEach(function (item) {
+        models.solicitacoes.findOne({ where: { id: item } })
+            .on('sucess', function (solicitacao) {
+                if (solicitacao) {
+                    solicitacao.updateAttributes({
+                        status: "REQUISITADO"
+                    })
+                        .success(function () { })
+                }
+
+            })
+    });
+    */
 });
 
-router.get("/",isLoggedInAdm, function (req, res) {
+router.get("/", isLoggedInAdm, function (req, res) {
     res.render("requisicoes/requisicao");
 });
 
