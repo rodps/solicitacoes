@@ -3,6 +3,7 @@ var router = express.Router();
 var models = require("../models");
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const isLoggedInAdm = require("../middleware/index").isLoggedInAdm;
 
 router.get("/listar/orcamentos", function (req, res) {
     models.orcamentos.findAll({
@@ -18,7 +19,7 @@ router.get("/listar/orcamentos", function (req, res) {
 
 });
 
-router.get("/listar/solicitacoes", function (req, res) {
+router.get("/listar/solicitacoes",isLoggedInAdm ,function (req, res) {
 
     models.solicitacoes.findAll({
         include: [{
@@ -34,7 +35,7 @@ router.get("/listar/solicitacoes", function (req, res) {
 
 });
 
-router.get("/listar/solicitacoes/:id", function (req, res) {
+router.get("/listar/solicitacoes/:id",isLoggedInAdm, function (req, res) {
    const id = req.params.id;
         
     models.solicitacoes.findById(id).then(solicitacao =>{
@@ -50,8 +51,10 @@ router.get("/listar/solicitacoes/:id", function (req, res) {
         //res.send(solicitacao);
 });
 
-router.post("/criar/requisicoes", function (req, res) {
-    models.requisicoes.create({usuario_id : 1}).then((_requisicao) => {
+router.post("/criar/requisicoes",isLoggedInAdm, function (req, res) {
+    req.isAuthenticated();
+    usuario_id = req.user.id;
+    models.requisicoes.create({usuario_id : usuario_id}).then((_requisicao) => {
            let id_requisicao =_requisicao.numero;
          //  console.log(id_requisicao)
             let lista = []
@@ -78,7 +81,7 @@ router.post("/criar/requisicoes", function (req, res) {
         
 });
 
-router.get("/", function (req, res) {
+router.get("/",isLoggedInAdm, function (req, res) {
     res.render("requisicoes/requisicao");
 });
 
