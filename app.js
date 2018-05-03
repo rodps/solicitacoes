@@ -8,7 +8,8 @@ const express = require("express"),
   app = express(),
   loginRouter = require("./routes/login"),
   solicitacoesRouter = require("./routes/solicitacoes"),
-  produtosRouter = require("./routes/produtos");
+  produtosRouter = require("./routes/produtos"),
+  requisicoesRouter = require("./routes/requisicoes");
 
 // configuracoes
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,6 +32,8 @@ passport.deserializeUser(passportStrategies.deserialize);
 app.use("/", loginRouter);
 app.use("/solicitacoes", solicitacoesRouter);
 app.use("/produtos", produtosRouter);
+app.use("/requisicoes", requisicoesRouter);
+
 
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem

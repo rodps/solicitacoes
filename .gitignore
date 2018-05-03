@@ -97,3 +97,6 @@ typings/
 .Trashes
 ehthumbs.db
 Thumbs.db
+.vs/pi-almoxarifado/v15/.suo
+.vs/ProjectSettings.json
+.vs/VSWorkspaceState.json

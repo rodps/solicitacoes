@@ -1,21 +1,66 @@
 .table{
-    width: 75%;
+	width: 75%;
+	margin: auto;
     margin-bottom : .5em;
     table-layout: fixed;
 }
 td, th {
+	white-space: nowrap; 
+    width: 12em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: .7em;
 	margin: 0;
 	border: 1px solid rgba(172, 169, 169, 0.808);
 	text-align: center;
 }
 th{
-    font-weight: bold;
+	font-weight: bold;
 	background-color: #363333;
-    color: blanchedalmond;
+	color: blanchedalmond;
 }
 label{
 	color: #555;
 	display: block;
 	margin-bottom: .2em;
+}
+.solicitacao-invalido{
+	background-color: lightcoral;
+	color: white
+	}
+
+.info-id{
+	visibility: hidden;
+}
+
+button{
+	margin-top: 5%;
+	margin-bottom: 0.5%;
+	margin-left: 68.8%;
+
+	padding: .5em;
+	border: 0;
+	border-bottom: 3px solid;
+	font-size: 1em;
+	font-weight: bold;
+	cursor: pointer;
+	color: blanchedalmond;
+	background-color:#363333;
+	border-color: black;
+	width: 12%;
+    display: block;
+    clear: both;
+}
+button:active{
+	margin-top:5%;
+	border: 0;
+}
+button[disabled=disabled], button:disabled {
+    background-color: gray;
+	border-color: darkgray;
+}
+
+.solicitacaoSelecionada{
+	background-color: rgba(107, 211, 107, 0.637);
+	color: white
 }
