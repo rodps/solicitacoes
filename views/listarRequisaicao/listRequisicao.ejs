@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html>
-
-
 <head>
 	<title>Sistema Almoxarifado</title>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/requisicao.css">
+	<link rel="stylesheet" type="text/css" href="/css/listRequisicao.css">
 </head>
 <body>
-
 	<% include ../../views/partialsAdm/navAdm %>
-	<% include ../../views/requisicoes/modal %>	
-	<div id= "error" style = "display:none;background-color: rgb(247, 162, 162);" class="alert alert-secondary" role="alert">
-			Nenhuma solicitacao selecionada
-	</div>
-
-	<button type="button"  data-toggle="modal" id="newRequisicao" class="botao bto-principal" data-target="#exampleModal">Nova Requisição</button>
-	
+	<button type="button"  data-toggle="modal" id="newRequisicao" class="botao bto-principal" data-target="#exampleModal">Nova Requisição</button>	
 	<div class="container">
 		<table class="table">
 			<thead>
                 <tr>
 			        <th scope="col" style="width:15%" id = "thData">Data</th>
-					<th scope="col" style="width:50%" id = "thDescricao">Descrição</th>
-                  	<th scope="col" style="width:15%" id = "thStatus">Status</th>
+					<th scope="col" style="width:50%" id = "thRequisicao">Numero Requisição</th>
 					<th scope="col" style="width:20%" id = "thSolicitante">Solicitante</th>
                 </tr>
             </thead>
@@ -33,12 +23,7 @@
         </table>
 		<script src="/js/req.js"></script>
 	</div>
-		
-	
-
-	<!-- Bootstrap JSs -->
 	<script src="/js/bootstrap.min.js"></script>
-	<!-- FontAwesome JS -->
 	<script src="/js/fontawesome-all.min.js"></script>
 </body>
 </html>
