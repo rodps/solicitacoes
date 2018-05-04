@@ -29,7 +29,6 @@ tabela.addEventListener("ondblclick", function(event){
     window.location.href = "#"
     });
 
-
 ///////////////////////////
 function addSolicitacaoNaTabela(solicitacao){
     var solicitacaoTr = montaTr(solicitacao);
@@ -47,7 +46,6 @@ function montaTr(solicitacao){
     solicitacaoTr.appendChild(montaTd(solicitacao.usuario.nome, "info-solicitante"  ));
     
     solicitacaoTr.appendChild(montaTd(solicitacao.id,           "info-id"           ));
-
     return solicitacaoTr;
  }
 function montaTd(dado,classe){
