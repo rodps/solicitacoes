@@ -94,7 +94,26 @@ router.get("/", isLoggedInAdm, function (req, res) {
     res.render("requisicoes/requisicao");
 });
 
-router.get("/listar/requisicoes", isLoggedInAdm, function (req, res) {
+
+router.get("/listar/requisicoes", function (req, res) {
+   
+
+     models.requisicoes.findAll({
+        include: [{
+            model: models.usuarios,
+            where: { id: Sequelize.col('usuario_id') }
+        }]
+    }).then(requisicoes => {
+     
+        res.send(requisicoes);
+    });
+
+
+    
+});
+
+
+router.get("/listar/requisicoes_solicitacoes", isLoggedInAdm, function (req, res) {
      models.solicitacao_requisicao.findAll({
         include: [{
             model: models.solicitacoes,
@@ -106,8 +125,21 @@ router.get("/listar/requisicoes", isLoggedInAdm, function (req, res) {
     });
 });
 
-router.get("/listar/requisicoes/:id", isLoggedInAdm, function (req, res) {
-    res.render("requisicoes/requisicao");
+
+router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
+    models.requisicoes.findById(req.params.id).then(requisicao =>{
+        res.send(requisicao);
+    })
+});
+
+router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
+    models.requisicoes.findById(req.params.id).then(requisicao =>{
+        res.send(requisicao);
+    })
+});
+
+router.get("/historico/requisicoes", function (req, res) {
+    
 });
 
 
