@@ -10,57 +10,35 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<div class="container">
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+	<% include ../../views/requisicoes/navAdm %>
+	<% include ../../views/requisicoes/modal %>	
+	<div id= "error" style = "display:none;background-color: rgb(247, 162, 162);" class="alert alert-secondary" role="alert">
+			Nenhuma solicitacao selecionada
+	</div>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="/solicitacoes">Minhas Solicitações</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="/solicitacoes/new">Nova Solicitação</a>
-		      </li>
-		    </ul>
-		    <ul class="navbar-nav ml-auto">
-		    	<li class="nav-item">
-		    		<span class="navbar-text">Igor</span>
-		    	</li>
-		    	<li class="nav-item">
-		    		<a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
-		    	</li>
-		    </ul>
-		  </div>
-		</div>
-	</nav>
-
-	<button id="newRequisicao" class="botao bto-principal">Nova Requisição</button>
+	<button type="button"  data-toggle="modal" id="newRequisicao" class="botao bto-principal" data-target="#exampleModal">Nova Requisição</button>
+	
 	<div class="container">
 		<table class="table">
 			<thead>
                 <tr>
-			        		<th scope="col" style="width:15%" id = "thData">Data</th>
-									<th scope="col" style="width:50%" id = "thDescricao">Descrição</th>
-                  <th scope="col" style="width:15%" id = "thStatus">Status</th>
-									<th scope="col" style="width:20%" id = "thSolicitante">Solicitante</th>
+			        <th scope="col" style="width:15%" id = "thData">Data</th>
+					<th scope="col" style="width:50%" id = "thDescricao">Descrição</th>
+                  	<th scope="col" style="width:15%" id = "thStatus">Status</th>
+					<th scope="col" style="width:20%" id = "thSolicitante">Solicitante</th>
                 </tr>
             </thead>
             <tbody id="tabela-solicitacao">
             </tbody>        
         </table>
- 
-        <script src="/js/req.js"></script>
-
+		<script src="/js/req.js"></script>
 	</div>
+		
+	
+
 	<!-- Bootstrap JSs -->
 	<script src="/js/bootstrap.min.js"></script>
-
 	<!-- FontAwesome JS -->
 	<script src="/js/fontawesome-all.min.js"></script>
-	 
-
 </body>
 </html>
