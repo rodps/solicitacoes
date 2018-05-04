@@ -56,7 +56,7 @@ router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
     usuario_id = req.user.id;
 
     models.requisicoes.create({ usuario_id: usuario_id }).then((_requisicao) => {
-        let id_requisicao = _requisicao.numero;
+        let id_requisicao = _requisicao.id;
         let lista = []
         req.body.solicitacoes.forEach(function (item) {
             lista.push({
@@ -76,24 +76,40 @@ router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
         res.status(400).send('Não foi possível incluir a requisicao ' +
             'no banco de dados.');
     });
-    /*
-    req.body.solicitacoes.forEach(function (item) {
-        models.solicitacoes.findOne({ where: { id: item } })
-            .on('sucess', function (solicitacao) {
-                if (solicitacao) {
-                    solicitacao.updateAttributes({
-                        status: "REQUISITADO"
-                    })
-                        .success(function () { })
-                }
-
-            })
-    });
-    */
+    
+    models.solicitacoes.update({
+         status: "REQUISITADO",    
+    },{
+         where: {
+            id: {
+                 [Op.in] : req.body.solicitacoes
+            }
+         }
+    }).then(() => {
+        console.log('atualizado');
+    })
 });
 
 router.get("/", isLoggedInAdm, function (req, res) {
     res.render("requisicoes/requisicao");
 });
+
+router.get("/listar/requisicoes", function (req, res) {
+     models.solicitacao_requisicao.findAll({
+        include: [{
+            model: models.solicitacoes,
+            where: { id: Sequelize.col('solicitacao_id') }
+        }]
+    }).then(solicitacoes => {
+
+        res.send(solicitacoes);
+    });
+});
+
+router.get("/listar/requisicoes/:id", isLoggedInAdm, function (req, res) {
+    res.render("requisicoes/requisicao");
+});
+
+
 
 module.exports = router;

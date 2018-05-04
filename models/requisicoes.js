@@ -9,10 +9,8 @@ function associate(models){
 module.exports = function(sequelize , DataTypes){
     var requisicoes = sequelize.define('requisicoes', {
         numero: {
-            type:DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-         },
+            type : DataTypes.STRING(50)
+        },
         data: {
             type : DataTypes.DATE,
             defaultValue : DataTypes.NOW
