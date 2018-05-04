@@ -27,7 +27,7 @@ router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
             where: { id: Sequelize.col('usuario_id') }
         }],
         where: {
-            [Op.or]: [{ status: "ABERTO" }, { status: "APROVADO" }, { status: "DESERTO" }]
+            [Op.or]: [ { status: "APROVADO" }, { status: "DESERTO" }]
         }
     }).then(solicitacoes => {
         res.send(solicitacoes);
@@ -94,7 +94,7 @@ router.get("/", isLoggedInAdm, function (req, res) {
     res.render("requisicoes/requisicao");
 });
 
-router.get("/listar/requisicoes", function (req, res) {
+router.get("/listar/requisicoes", isLoggedInAdm, function (req, res) {
      models.solicitacao_requisicao.findAll({
         include: [{
             model: models.solicitacoes,
