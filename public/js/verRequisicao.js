@@ -1,13 +1,13 @@
-
+var listRequisicao = []
 var idSolicitacao
 var statusSolicitacao
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
-var btdCarregar;
+var btdCarregar
 
 
-console.log("asd");
-xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes"); //tipo de requisição + end.
+console.log("akkkkkkkkkkkkkkkkkkkkkkkkkkkiiii")
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/"+idSolicitacao); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
@@ -17,21 +17,25 @@ xhr.addEventListener("load", function(){
 })
 xhr.send();
 
-var tabela = document.querySelector("table")
-tabela.addEventListener("dblclick",function(event){
-
-    console.log("duplockick")
-   var row = event.target.parentNode
+var tabela = document.querySelector("table");
+tabela.addEventListener("click", function(event){  
+    row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
-    //carregar o verRequisicao passando ID
+    //statusSolicitacao = getStatus(event) //  usar no deserto
+
+    if(!listRequisicao.includes(idSolicitacao)){
+        row.classList.add("solicitacaoSelecionada")
+    }
     
-    var m = window.open("http://localhost:3000/requisicoes/lista/solicitacoes/requicao","_self");
-    consele.log(m.document.write("asd"));
+    else{
+        row.classList.remove("solicitacaoSelecionada")    
+    }
+    
+});
 
-    //window.location.href = "http://localhost:3000/requisicoes/lista/solicitacoes/requicao"
-})
 
 
+///////////////////////////
 function addSolicitacaoNaTabela(solicitacao){
     var solicitacaoTr = montaTr(solicitacao);
     var tabela = document.querySelector("#tabela-solicitacao");
@@ -44,18 +48,22 @@ function montaTr(solicitacao){
     solicitacaoTr.classList.add("solicitacao");
  
     solicitacaoTr.appendChild(montaTd(solicitacao.data,         "info-data"         ));
-    solicitacaoTr.appendChild(montaTd(solicitacao.numero,       "info-numero"    ));
+    solicitacaoTr.appendChild(montaTd(solicitacao.descricao,    "info-descricao"    ));
+    solicitacaoTr.appendChild(montaTd(solicitacao.status,       "info-status"       ));
     solicitacaoTr.appendChild(montaTd(solicitacao.usuario.nome, "info-solicitante"  ));
     
     solicitacaoTr.appendChild(montaTd(solicitacao.id,           "info-id"           ));
+
     return solicitacaoTr;
  }
+
 function montaTd(dado,classe){
     var td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe);
     return td;
 }
+
 function getStatus(event){
     if(event.childNodes[2].textContent == "ABERTO"){
         return true

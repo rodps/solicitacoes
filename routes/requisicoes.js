@@ -127,19 +127,25 @@ router.get("/listar/requisicoes_solicitacoes", isLoggedInAdm, function (req, res
 
 
 router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
-    models.requisicoes.findById(req.params.id).then(requisicao =>{
-        res.send(requisicao);
-    })
+     models.solicitacao_requisicao.findAll({
+        include: [{
+            model: models.solicitacoes,
+            where: { id: Sequelize.col('solicitacao_id') }
+        }], 
+        where: { requisicao_id : req.params.id}
+    }).then(solicitacoes => {
+
+        res.send(solicitacoes);
+    });
 });
 
-router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
-    models.requisicoes.findById(req.params.id).then(requisicao =>{
-        res.send(requisicao);
-    })
+
+router.get("/lista/solicitacoes/requicao", function (req, res) {
+    res.render("verRequisicao/verRequisicao")
 });
 
 router.get("/historico/requisicoes", function (req, res) {
-    
+    res.render("listarRequisaicao/listRequisicao")
 });
 
 

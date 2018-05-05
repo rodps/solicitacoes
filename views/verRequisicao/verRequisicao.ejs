@@ -7,24 +7,27 @@
 	<link rel="stylesheet" type="text/css" href="/css/requisicao.css">
 </head>
 <body>
-
-	<p>Listar Requisicao</p>
+	<p>Ver Requisicao</p>
 	<% include ../../views/partialsAdm/navAdm %>
 	<div class="container">
 		<table class="table">
 			<thead>
                 <tr>
 			        <th scope="col" style="width:15%" id = "thData">Data</th>
-					<th scope="col" style="width:50%" id = "thRequisicao">Numero Requisição</th>
+					<th scope="col" style="width:50%" id = "thDescricao">Descrição</th>
+                  	<th scope="col" style="width:15%" id = "thStatus">Status</th>
 					<th scope="col" style="width:20%" id = "thSolicitante">Solicitante</th>
                 </tr>
             </thead>
             <tbody id="tabela-solicitacao">
             </tbody>        
         </table>
-		<script src="/js/listRequisicao.js"></script>
+		<script src="/js/verRequisicao.js"></script>
 	</div>
+
+	<!-- Bootstrap JSs -->
 	<script src="/js/bootstrap.min.js"></script>
+	<!-- FontAwesome JS -->
 	<script src="/js/fontawesome-all.min.js"></script>
 </body>
 </html>
