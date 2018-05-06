@@ -10,8 +10,8 @@ var idRequisicao
 idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 
-//xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[4]); //tipo de requisição + end.
-xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/VerSolicitacao.json"); //tipo de requisição + end.
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[4]); //tipo de requisição + end.
+//xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/VerSolicitacao.json"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     
     var sol = JSON.parse(xhr.responseText);
@@ -46,7 +46,7 @@ function montaTr(solicitacao){
     solicitacaoTr.appendChild(montaTd(solicitacao.data,                     "info-data"         ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.descricao,     "info-descricao"    ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.status,        "info-status"       ));
-    solicitacaoTr.appendChild(montaTd(solicitacao.solicitacao.usuario.nome,           "info-solicitante"  ));
+    solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.usuario.nome,           "info-solicitante"  ));
     
     solicitacaoTr.appendChild(montaTd(solicitacao.id,                        "info-id"));
     return solicitacaoTr;
