@@ -14,7 +14,8 @@ module.exports = function(sequelize , DataTypes){
         data: {
             type : DataTypes.DATE,
             defaultValue : DataTypes.NOW
-        }        
+        },  
+        status: DataTypes.ENUM('VALIDA','INVALIDA'),       
     }, {timestamps: false});
 
     requisicoes.associate = associate;
