@@ -6,7 +6,7 @@ var xhr = new XMLHttpRequest();
 var btdCarregar;
 
 
-console.log("asd");
+
 xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
@@ -26,7 +26,6 @@ tabela.addEventListener("dblclick",function(event){
     //carregar o verRequisicao passando ID
     
     var m = window.open("http://localhost:3000/requisicoes/lista/solicitacoes/requicao","_self");
-    consele.log(m.document.write("asd"));
 
     //window.location.href = "http://localhost:3000/requisicoes/lista/solicitacoes/requicao"
 })

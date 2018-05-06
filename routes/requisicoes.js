@@ -5,6 +5,9 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const isLoggedInAdm = require("../middleware/index").isLoggedInAdm;
 
+
+
+
 router.get("/listar/orcamentos", function (req, res) {
     models.orcamentos.findAll({
         include: [{
@@ -50,6 +53,11 @@ router.get("/listar/solicitacoes/:id", isLoggedInAdm, function (req, res) {
     })
     //res.send(solicitacao);
 });
+
+
+//---------------------------------------REQUISIÇOS--------------------------------------//
+
+
 
 router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
     req.isAuthenticated();
