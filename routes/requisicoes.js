@@ -103,7 +103,7 @@ router.get("/", isLoggedInAdm, function (req, res) {
 });
 
 
-router.get("/listar/requisicoes", function (req, res) {
+router.get("/listar", function (req, res) {
    
 
      models.requisicoes.findAll({
@@ -148,11 +148,11 @@ router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
 });
 
 
-router.get("/lista/solicitacoes/requicao/:id", function (req, res) {
+router.get("/lista/solicitacoes/:id", function (req, res) {
     res.render("verRequisicao/verRequisicao")
 });
 
-router.get("/historico/requisicoes", function (req, res) {
+router.get("/historico", function (req, res) {
     res.render("listarRequisaicao/listRequisicao")
 });
 
