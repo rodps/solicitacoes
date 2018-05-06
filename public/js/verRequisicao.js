@@ -7,19 +7,21 @@ var btdCarregar
 var getId = new XMLHttpRequest();
 var idRequisicao
 
+
 idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 
 //xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[4]); //tipo de requisição + end.
 xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/VerSolicitacao.json"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
-    
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
     addSolicitacaoNaTabela(solicitacao);
 });
 })
 xhr.send();
+
+
 
 var idRequisicao = document.getElementById("viewReq").innerHTML += pos[4]
 
@@ -37,6 +39,22 @@ function addSolicitacaoNaTabela(solicitacao){
     var tabela = document.querySelector("#tabela-solicitacao");
     
     tabela.appendChild(solicitacaoTr);
+    
+    var botao = document.getElementById("close"+ solicitacao.solicitaco.id)
+    botao.addEventListener("click",function(event){
+
+    console.log(event.target.solicitacao)
+    let id = event.target.solicitacao
+    
+    var json = JSON.stringify(id);
+    var ajax = new XMLHttpRequest()
+    ajax.open("POST", "?????", true)
+    ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
+    ajax.send(json)
+    window.location.reload()
+    
+})
+
     return
 }
 function montaTr(solicitacao){
@@ -46,8 +64,9 @@ function montaTr(solicitacao){
     solicitacaoTr.appendChild(montaTd(solicitacao.data,                     "info-data"         ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.descricao,     "info-descricao"    ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.status,        "info-status"       ));
-    solicitacaoTr.appendChild(montaTd(solicitacao.solicitacao.usuario.nome,           "info-solicitante"  ));
+    solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.usuario.nome,  "info-solicitante"  ));
     
+    solicitacaoTr.appendChild(montaButton(solicitacao.solicitaco.id))
     solicitacaoTr.appendChild(montaTd(solicitacao.id,                        "info-id"));
     return solicitacaoTr;
  }
@@ -58,9 +77,26 @@ function montaTd(dado,classe){
     td.classList.add(classe);
     return td;
 }
+function montaButton(id){
+    var btn = document.createElement("Button");
+    var lbl = document.createTextNode("X");        
+    btn.appendChild(lbl); 
+   
+    btn.classList.add("info-close")
+    btn.id = "close" + id 
+    btn.solicitacao = id
+    var td = document.createElement("td");
+    td.appendChild(btn)
+    return td;
+}
+
 function getStatus(event){
     if(event.childNodes[2].textContent == "ABERTO"){
         return true
     }
     return false
+}
+
+function close(){
+        
 }
