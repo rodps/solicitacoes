@@ -4,10 +4,15 @@ var statusSolicitacao
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 var btdCarregar
+var getId = new XMLHttpRequest();
+var idRequisicao
 
 
-console.log("akkkkkkkkkkkkkkkkkkkkkkkkkkkiiii")
-xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/"+idSolicitacao); //tipo de requisição + end.
+idRequisicao = window.location.pathname
+
+var pos = idRequisicao.split("/")
+
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[5]); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
@@ -32,8 +37,6 @@ tabela.addEventListener("click", function(event){
     }
     
 });
-
-
 
 ///////////////////////////
 function addSolicitacaoNaTabela(solicitacao){

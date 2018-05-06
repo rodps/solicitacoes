@@ -148,7 +148,7 @@ router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
 });
 
 
-router.get("/lista/solicitacoes/requicao", function (req, res) {
+router.get("/lista/solicitacoes/requicao/:id", function (req, res) {
     res.render("verRequisicao/verRequisicao")
 });
 

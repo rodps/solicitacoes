@@ -5,14 +5,11 @@ var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 var btdCarregar;
 
-
-
-xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes"); //tipo de requisição + end.
+xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
     addSolicitacaoNaTabela(solicitacao);
-    
     });
 })
 xhr.send();
@@ -23,11 +20,9 @@ tabela.addEventListener("dblclick",function(event){
     console.log("duplockick")
    var row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
-    //carregar o verRequisicao passando ID
+   
     
-    var m = window.open("http://localhost:3000/requisicoes/lista/solicitacoes/requicao","_self");
-
-    //window.location.href = "http://localhost:3000/requisicoes/lista/solicitacoes/requicao"
+    window.location.href = "http://localhost:3000/requisicoes/lista/solicitacoes/requicao/"+idSolicitacao
 })
 
 

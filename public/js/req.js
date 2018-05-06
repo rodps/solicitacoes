@@ -51,7 +51,6 @@ btdCarregar = document.querySelector("#saveRequisicao");
         else{
             document.getElementById("error").style.display = "block";
             }
-
 })
 
 ///////////////////////////
