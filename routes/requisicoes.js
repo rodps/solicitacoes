@@ -153,6 +153,11 @@ router.get("/historico", function (req, res) {
     res.render("listarRequisaicao/listRequisicao")
 });
 
+router.delete('/excluir/solicitacao/:id', function (req, res) {
+  
+    res.send('DELETE request to homepage');
+});
+
 
 //---------------------------------ORÇAMENTOS SOLICITACOES-------------------------------
 
