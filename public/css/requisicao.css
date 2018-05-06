@@ -43,7 +43,7 @@ button{
 
 	padding: .5em;
 	border: 0;
-	border-bottom: 3px solid;
+	border-bottom: 0px solid;
 	font-size: 1em;
 	font-weight: bold;
 	cursor: pointer;
@@ -75,4 +75,13 @@ h3{
 
 #navbarADM{
 	margin-bottom: 5%;
+}
+.info-close{
+	display: block;
+	margin: auto;
+	color: white;
+	font-size: 0.8em;
+	width: auto;
+	background-color: firebrick;
+	
 }
