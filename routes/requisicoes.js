@@ -8,30 +8,17 @@ const isLoggedInAdm = require("../middleware/index").isLoggedInAdm;
 
 
 
-router.get("/listar/orcamentos", function (req, res) {
-    models.orcamentos.findAll({
-        include: [{
-            model: models.solicitacoes,
-            where: { id: Sequelize.col('orcamentos.id'), status: 'ABERTO' }
-        }]
-
-    }).then(solicitacoes => {
-        res.send(solicitacoes);
-    });
-
-
-});
-
 router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
 
     models.solicitacoes.findAll({
         include: [{
             model: models.usuarios,
-            where: { id: Sequelize.col('usuario_id') }
+            where: { id: Sequelize.col('usuario_id') },
+           
         }],
         where: {
             [Op.or]: [ { status: "APROVADO" }, { status: "DESERTO" }]
-        }
+        },
     }).then(solicitacoes => {
         res.send(solicitacoes);
     });
@@ -63,7 +50,7 @@ router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
     req.isAuthenticated();
     usuario_id = req.user.id;
 
-    models.requisicoes.create({ usuario_id: usuario_id }).then((_requisicao) => {
+    models.requisicoes.create({ usuario_id: usuario_id, status : "VALIDA" }).then((_requisicao) => {
         let id_requisicao = _requisicao.id;
         let lista = []
         req.body.solicitacoes.forEach(function (item) {
@@ -109,7 +96,8 @@ router.get("/listar", function (req, res) {
      models.requisicoes.findAll({
         include: [{
             model: models.usuarios,
-            where: { id: Sequelize.col('usuario_id') }
+            where: { id: Sequelize.col('usuario_id') },
+            attributes: ['nome'],
         }]
     }).then(requisicoes => {
      
@@ -126,7 +114,8 @@ router.get("/listar/requisicoes_solicitacoes", isLoggedInAdm, function (req, res
         include: [{
             model: models.solicitacoes,
             where: { id: Sequelize.col('solicitacao_id') }
-        }]
+        }],
+        where : {status : "VALIDA"}
     }).then(solicitacoes => {
 
         res.send(solicitacoes);
@@ -138,9 +127,17 @@ router.get("/listar/requisicoes_solicitacoes/:id", function (req, res) {
      models.solicitacao_requisicao.findAll({
         include: [{
             model: models.solicitacoes,
-            where: { id: Sequelize.col('solicitacao_id') }
-        }], 
-        where: { requisicao_id : req.params.id}
+            where: { id: Sequelize.col('solicitacao_id')},
+            attributes: ['id','descricao','status','data'],
+            include : [{
+                model : models.usuarios,
+                where : {id : Sequelize.col('usuario_id')}, 
+                attributes: ['nome']
+            }],
+        }],
+        
+        where: { requisicao_id : req.params.id},
+        
     }).then(solicitacoes => {
 
         res.send(solicitacoes);
@@ -154,6 +151,19 @@ router.get("/lista/solicitacoes/:id", function (req, res) {
 
 router.get("/historico", function (req, res) {
     res.render("listarRequisaicao/listRequisicao")
+});
+
+
+//---------------------------------ORÇAMENTOS SOLICITACOES-------------------------------
+
+router.get("/listar/orcamentos/:idSolicitacao", function (req, res) {
+    models.orcamentos.findAll({
+        where : {solicitacao_id : req.params.idSolicitacao}
+    }).then(orcamentos => {
+        res.send(orcamentos);
+    });
+
+
 });
 
 
