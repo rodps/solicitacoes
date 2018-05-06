@@ -37,7 +37,7 @@ label{
 }
 
 button{
-	margin-top: 5%;
+	
 	margin-bottom: 0.5%;
 	margin-left: 68.8%;
 
@@ -55,10 +55,24 @@ button{
     clear: both;
 }
 button:active{
-	margin-top:5%;
+	
 	border: 0;
 }
 button[disabled=disabled], button:disabled {
     background-color: gray;
 	border-color: darkgray;
+}
+#viewText{
+	margin-left: 20%;
+	text-align: inherit;			
+}
+
+h3{
+	font-family: "Arial", sans-serif;
+	font-size: 1em;
+	display: block;
+}
+
+#navbarADM{
+	margin-bottom: 5%;
 }

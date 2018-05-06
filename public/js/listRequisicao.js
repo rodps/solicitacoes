@@ -17,11 +17,8 @@ xhr.send();
 var tabela = document.querySelector("table")
 tabela.addEventListener("dblclick",function(event){
 
-    console.log("duplockick")
-   var row = event.target.parentNode
+    var row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
-   
-    
     window.location.href = "http://localhost:3000/requisicoes/lista/solicitacoes/"+idSolicitacao
 })
 
