@@ -5,7 +5,7 @@ var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 var btdCarregar
 
-xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
+xhr.open("GET", "??????"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
@@ -20,7 +20,6 @@ tabela.addEventListener("click", function(event){
     row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
     //statusSolicitacao = getStatus(event) //  usar no deserto
-
     if(!listRequisicao.includes(idSolicitacao)){
         listRequisicao.push(idSolicitacao)
         row.classList.add("solicitacaoSelecionada")
@@ -43,7 +42,7 @@ btdCarregar = document.querySelector("#saveRequisicao");
             console.log("okok")
             var json = JSON.stringify({"solicitacoes" : listRequisicao});
             var ajax = new XMLHttpRequest()
-            ajax.open("POST", "?????")
+            ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes", true)
             ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
             ajax.send(json)
             window.location.reload()

@@ -7,12 +7,11 @@ var btdCarregar
 var getId = new XMLHttpRequest();
 var idRequisicao
 
-
 idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 
-xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[4]); //tipo de requisição + end.
-//xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/VerSolicitacao.json"); //tipo de requisição + end.
+//xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[4]); //tipo de requisição + end.
+xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/VerSolicitacao.json"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
@@ -20,18 +19,20 @@ xhr.addEventListener("load", function(){
 });
 })
 xhr.send();
-
-
-
 var idRequisicao = document.getElementById("viewReq").innerHTML += pos[4]
 
 var tabela = document.querySelector("table");
 tabela.addEventListener("dblclick", function(event){  
     var row = event.target.parentNode
-    var row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
     window.location.href = "????"+idSolicitacao
 });
+
+var btn = document.getElementById("addRequisicao")
+    btn.addEventListener("click",function(event){
+        window.location.href = "????" + idSolicitacao
+})
+
 
 ///////////////////////////
 function addSolicitacaoNaTabela(solicitacao){

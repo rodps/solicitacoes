@@ -66,13 +66,11 @@ button[disabled=disabled], button:disabled {
 	margin-left: 20%;
 	text-align: inherit;			
 }
-
 h3{
 	font-family: "Arial", sans-serif;
 	font-size: 1em;
 	display: block;
 }
-
 #navbarADM{
 	margin-bottom: 5%;
 }
@@ -83,5 +81,10 @@ h3{
 	font-size: 0.8em;
 	width: auto;
 	background-color: firebrick;
-	
+}
+
+#addRequisicao{
+	margin-left: 70.7%;
+	width: 10%;
+	font-size: 0.8em;
 }
