@@ -10,6 +10,8 @@ const express = require("express"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
   requisicoesRouter = require("./routes/requisicoes");
+  siorgRouter = require("./routes/siorg");
+
 
 // configuracoes
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,6 +35,7 @@ app.use("/", loginRouter);
 app.use("/solicitacoes", solicitacoesRouter);
 app.use("/produtos", produtosRouter);
 app.use("/requisicoes", requisicoesRouter);
+app.use("/siorg", siorgRouter);
 
 
 //Cria o banco de dados

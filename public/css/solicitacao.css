@@ -1,0 +1,70 @@
+
+#showSolicitacao{
+    display: block;
+    background-color: rgba(148, 146, 146, 0.1);
+    width: 60%;
+    margin: auto;
+    margin-top: 5%;
+    text-align: left;
+    padding: 3%;
+}
+p{
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: #363333;
+    
+}
+#quantStatus{
+    display: block;
+    margin-left: 50%;
+}
+
+#statusSolicitacaol{
+    height: 10%;
+    width: 20%;
+    display: block;
+}
+#descricaoSolicitacao, #justificativaSolicitacao{
+    width: 100%;
+}
+#quantidadeSolicitacao{
+    width: 5%;
+}
+
+.table{
+	width: 250%;
+	margin: center;
+	margin-top: 0px;
+    margin-bottom : .5em;
+    table-layout: fixed;
+}
+
+td, th {
+	white-space: nowrap; 
+    width: 12em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: .7em;
+	margin: 0;
+	border: 1px solid rgba(172, 169, 169, 0.808);
+	text-align: center;
+}
+th{
+	font-weight: bold;
+	background-color: #363333;
+	color: whitesmoke;
+}
+
+.info-id{
+    display: block;
+	visibility: hidden;
+}
+
+p#IdShowRequisicao{
+    color: black;
+    text-align: center;
+}
+
+label{
+    margin-top: 2%;
+    margin-bottom: -5%;
+}

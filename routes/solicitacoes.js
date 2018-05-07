@@ -12,6 +12,9 @@ router.get("/", isLoggedIn, (req, res) => {
 router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("solicitacoes/adicionar");
 });
+router.get("/show/:id", (req, res) => {
+  res.render("solicitacoes/show");
+});
 
 router.post("/adicionar", isLoggedIn, (req, res) => {
   const solicitacao = {

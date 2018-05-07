@@ -15,6 +15,15 @@ xhr.addEventListener("load", function(){
 })
 xhr.send();
 
+var tabelaShow = document.querySelector("table");
+tabelaShow.addEventListener("dblclick", function(event){  
+    var row = event.target.parentNode
+    idSolicitacao = row.lastChild.textContent
+    window.location.href = "http://localhost:3000/solicitacoes/show/" + idSolicitacao
+});
+
+
+
 var tabela = document.querySelector("table");
 tabela.addEventListener("click", function(event){  
     row = event.target.parentNode
@@ -40,10 +49,9 @@ tabela.addEventListener("click", function(event){
 btdCarregar = document.querySelector("#saveRequisicao");
     btdCarregar.addEventListener("click",function(){
         if(listRequisicao.length != 0){
-            console.log("okok")
             var json = JSON.stringify({"solicitacoes" : listRequisicao});
             var ajax = new XMLHttpRequest()
-            ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes", true)
+            ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes")
             ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
             ajax.send(json)
             window.location.reload()
@@ -51,7 +59,6 @@ btdCarregar = document.querySelector("#saveRequisicao");
         else{
             document.getElementById("error").style.display = "block";
             }
-
 })
 
 ///////////////////////////

@@ -1,8 +1,16 @@
 .table{
 	width: 75%;
 	margin: auto;
+	margin-top: 0px;
     margin-bottom : .5em;
     table-layout: fixed;
+}
+#siorgCadastro{
+	width: 65%;
+	margin: auto;
+}
+#botaoConfirmaSiorg{
+	margin-left: 88%;
 }
 td, th {
 	white-space: nowrap; 
@@ -17,7 +25,7 @@ td, th {
 th{
 	font-weight: bold;
 	background-color: #363333;
-	color: blanchedalmond;
+	color: whitesmoke;
 }
 label{
 	color: #555;
@@ -37,17 +45,17 @@ label{
 }
 
 button{
-	margin-top: 5%;
+	
 	margin-bottom: 0.5%;
 	margin-left: 68.8%;
 
 	padding: .5em;
 	border: 0;
-	border-bottom: 3px solid;
+	border-bottom: 0px solid;
 	font-size: 1em;
 	font-weight: bold;
 	cursor: pointer;
-	color: blanchedalmond;
+	color: whitesmoke;
 	background-color:#363333;
 	border-color: black;
 	width: 12%;
@@ -55,10 +63,70 @@ button{
     clear: both;
 }
 button:active{
-	margin-top:5%;
+	
 	border: 0;
 }
 button[disabled=disabled], button:disabled {
     background-color: gray;
 	border-color: darkgray;
+}
+#viewText{
+	margin-left: 20%;
+	text-align: inherit;			
+}
+h3{
+	font-family: "Arial", sans-serif;
+	font-size: 1em;
+	display: block;
+}
+#navbarADM{
+	margin-bottom: 5%;
+}
+
+.info-close{
+	display: block;
+	margin: auto;
+	color: white;
+	font-size: 0.8em;
+	width: auto;
+	background-color: firebrick;
+}
+
+#newSolicitacao{
+	margin-left: 70.7%;
+	width: 10%;
+	font-size: 0.8em;
+}
+#addRequisicao{
+	margin-left: 72.5%;
+	width: 8%;
+	font-size: 0.8em;
+}
+
+#criarReq{
+	margin-left: 19.5%;
+	margin-bottom: -3.3%
+}
+#listarReq{
+	margin-left: 20%;
+	margin-bottom: 0%
+}
+
+#viewReq{
+	margin-left: 20%;
+	margin-bottom: 0%
+}
+#edRequisicao{
+	margin-left: 19.6%;
+	margin-bottom: -3%;
+}
+#viewReq{
+	margin-left: 20%;
+	margin-bottom: -4.5%;
+	
+}
+
+p{
+	font-family: "Arial Black", Gadget, sans-serif;
+	color: #363333;
 }
