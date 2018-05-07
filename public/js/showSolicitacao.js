@@ -1,16 +1,19 @@
 var xhr = new XMLHttpRequest();
 var ajax = new XMLHttpRequest();
 
+var idRequisicao = window.location.pathname
+var pos = idRequisicao.split("/")
 
-ajax.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
+
+ajax.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes/" + pos[3]); //tipo de requisição + end.
 ajax.addEventListener("load", function(){
     var sol = JSON.parse(ajax.responseText);
     addLabel(sol)
-    var Idlb = document.getElementById("IdShowRequisicao").innerHTML += sol.id
+    var Idlb = document.getElementById("IdShowRequisicao").innerHTML += pos[3]
 })
 ajax.send()
 
-xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/orcamento.json"); //tipo de requisição + end.
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/orcamentos/" + pos[3]); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {

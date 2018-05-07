@@ -15,6 +15,15 @@ xhr.addEventListener("load", function(){
 })
 xhr.send();
 
+var tabelaShow = document.querySelector("table");
+tabelaShow.addEventListener("dblclick", function(event){  
+    var row = event.target.parentNode
+    idSolicitacao = row.lastChild.textContent
+    window.location.href = "http://localhost:3000/solicitacoes/show/" + idSolicitacao
+});
+
+
+
 var tabela = document.querySelector("table");
 tabela.addEventListener("click", function(event){  
     row = event.target.parentNode

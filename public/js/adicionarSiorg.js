@@ -1,5 +1,4 @@
 
-
 var btdCarregar = document.getElementById("botaoConfirmaSiorg");
 
     btdCarregar.addEventListener("click",function(){
@@ -15,7 +14,7 @@ var btdCarregar = document.getElementById("botaoConfirmaSiorg");
             ajax.open("POST", "http://localhost:3000/siorg/adicionar")
             ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
             ajax.send(json)
-            window.location.reload()
+            window.location.href = "http://localhost:3000/siorg/consultar"
         }
         else{
             alert("Preencha todos os campos")

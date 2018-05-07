@@ -30,7 +30,7 @@ var tabela = document.querySelector("table");
 tabela.addEventListener("dblclick", function(event){  
     var row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
-    window.location.href = "????"+idSolicitacao
+    window.location.href = "http://localhost:3000/solicitacoes/show/" + idSolicitacao
 });
 
 var btn = document.getElementById("addRequisicao")
@@ -75,7 +75,7 @@ function montaTr(solicitacao){
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.usuario.nome,  "info-solicitante"  ));
 
     solicitacaoTr.appendChild(montaButton(solicitacao.solicitaco.id))
-    solicitacaoTr.appendChild(montaTd(solicitacao.id,                        "info-id"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.id,                        "info-id"));
     return solicitacaoTr;
  }
 
