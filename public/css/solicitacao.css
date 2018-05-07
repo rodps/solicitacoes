@@ -1,0 +1,41 @@
+#showSolicitacao{
+    display: block;
+    background-color: violet;
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    padding: 3%;
+}
+
+p{
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: #363333;
+    color: tomato;
+}
+
+#descricaoSolicitacao, #justificativaSolicitacao{
+    width: 100%;
+}
+#quantidadeSolicitacao{
+    width: 5%;
+}
+#table{
+	width: 63%;
+    padding: 20px;
+    margin: center;     
+}
+td, th {
+	white-space: nowrap; 
+    width: 12em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: .7em;
+	margin: 0;
+	border: 1px solid rgba(172, 169, 169, 0.808);
+	text-align: center;
+}
+th{
+	font-weight: bold;
+	background-color: #363333;
+	color: whitesmoke;
+}

@@ -1,31 +1,61 @@
-
+<!DOCTYPE html>
 <html>
-<header></header>
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/solicitacao.css">
+</hea>
 <% include ../../views/partials/header %>
-
 <body>
-    <% include ../../views/partials/nav-bar %>
-<div class="row">
-	<div class="col-md-12">
-		<h1>Solicitacao #</h1>
-		
-		<h4>Descricao:</h4>
-		<p>AS</p>
+	<% include ../../views/partialsAdm/navAdm %>
+	
+		<div id = "showSolicitacao">
+			<form>
+				
+				<div class="form-group">
+					<label for="quantidadeSolicitacao"><p>Quantidade</p></label>
+					<input type="form-control" class="form-control" id="quantidadeSolicitacao"></input>
+				</div>
 
-		<h4>Quantidade:</h4>
-		<p>2</p>
+				<div class="form-group">
+					<label for="descricaoSolicitacao"><p>Descricao:</p></label>
+					<textarea type="form-control" class="form-control" id="descricaoSolicitacao"></textarea>
+				</div>
 
-		<h4>Justificativa:</h4>
-		<p>dqdq</p>
+				<div class="form-group">
+					<label for="justificativaSolicitacao"><p>Justificativa:</p></label>
+					<textarea type="form-control" class="form-control" id="justificativaSolicitacao"></textarea>
+				</div>
 
-		<h4>Data:</h4>
-		<p>hoje</p>
+				<div class="form-group">
+						<label for="solicitanteSolicitacao"><p>Solicitante:</p></label>
+						<input type="form-control" class="form-control" id="solicitanteSolicitacao"></input>
+				</div>
+				</form>
 
-		<h4>Solicitante:</h4>
-		<p>eu</p>
-	</div>
-</div>
+				<div class="container">
+						<table id="table" class="table">
+							<thead>
+								<tr>
+									<th scope="col" style="width:15%" id = "thData">Valor</th>
+									<th scope="col" style="width:50%" id = "thDescricao">Fornecedor</th>
+									<th scope="col" style="width:15%" id = "thStatus">Contato</th>
+								</tr>
+							</thead>
+							<tbody id="tabela-solicitacao">
+							</tbody>        
+						</table>
+						<script src="/js/req.js"></script>
+					</div>
 
+					<!-- Bootstrap JSs -->
+					<script src="/js/bootstrap.min.js"></script>
+					<!-- FontAwesome JS -->
+					<script src="/js/fontawesome-all.min.js"></script>
+
+		</div>	
+
+<script src="/js/showSolicitacao.js"></script>
  <% include ../../views/partials/scripts %>
   </body>
 
