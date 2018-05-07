@@ -211,6 +211,13 @@ router.post("/adicionar/solicitacao/:idRequisicao", function (req, res) {
         })
 
 });
+
+router.get("/adicionar/sol/req/:id", function (req, res) {
+    res.render("addSolicitacao/addSolicitacao")
+});
+
+
+
 //---------------------------------ORÇAMENTOS SOLICITACOES-------------------------------
 
 router.get("/listar/orcamentos/:idSolicitacao", function (req, res) {

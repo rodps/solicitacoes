@@ -40,10 +40,9 @@ tabela.addEventListener("click", function(event){
 btdCarregar = document.querySelector("#saveRequisicao");
     btdCarregar.addEventListener("click",function(){
         if(listRequisicao.length != 0){
-            console.log("okok")
             var json = JSON.stringify({"solicitacoes" : listRequisicao});
             var ajax = new XMLHttpRequest()
-            ajax.open("POST", "?????")
+            ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes")
             ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
             ajax.send(json)
             window.location.reload()
