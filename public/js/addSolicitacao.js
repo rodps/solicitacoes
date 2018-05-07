@@ -41,8 +41,6 @@ idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 var requisicaoId = pos[5]
 
-console.log(requisicaoId)
-
 btdCarregar = document.querySelector("#saveRequisicao");
 btdCarregar.addEventListener("click", function () {
     if (listRequisicao.length != 0) {
