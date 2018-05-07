@@ -154,8 +154,22 @@ router.get("/historico", function (req, res) {
 });
 
 router.delete('/excluir/solicitacao/:id', function (req, res) {
-  
-    res.send('DELETE request to homepage');
+   models.solicitacoes.update({
+         status: "APROVADO",    
+    },{
+         where: {
+            id: req.params.id
+         }
+    }).then(() => {
+        console.log('Status ATUALIZADO');
+    })
+
+    models.solicitacao_requisicao.destroy({
+        where : {solicitacao_id : req.params.id}
+    }).then(() => {
+        console.log('solicitacao _ requisicao remolvida');
+    })
+   res.status(201).send("Solicitacao remolvida");
 });
 
 

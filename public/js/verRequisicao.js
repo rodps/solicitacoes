@@ -45,12 +45,13 @@ function addSolicitacaoNaTabela(solicitacao){
 
     console.log(event.target.solicitacao)
     let id = event.target.solicitacao
+    console.log(id);
     
     var json = JSON.stringify(id);
     var ajax = new XMLHttpRequest()
-    ajax.open("POST", "?????", true)
+    ajax.open("DELETE", "http://localhost:3000/requisicoes/excluir/solicitacao/"+ id, true)
     ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
-    ajax.send(json)
+    ajax.send()
     window.location.reload()
     
 })
