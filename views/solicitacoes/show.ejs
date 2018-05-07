@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Adicionar Solicitação</title>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/solicitacao.css">
-</hea>
-<% include ../../views/partials/header %>
+</head>
 <body>
 	<% include ../../views/partialsAdm/navAdm %>
-	
-		<div id = "showSolicitacao">
-			<form>
-				
-				<div class="form-group">
-					<label for="quantidadeSolicitacao"><p>Quantidade</p></label>
-					<input type="form-control" class="form-control" id="quantidadeSolicitacao"></input>
-				</div>
 
-				<div class="form-group">
-					<label for="descricaoSolicitacao"><p>Descricao:</p></label>
-					<textarea type="form-control" class="form-control" id="descricaoSolicitacao"></textarea>
-				</div>
+<div id = "showSolicitacao">
+		<form>
+			
+			<div class="form-group">
+				<p id="IdShowRequisicao">Solicitações nº : </p>
+			</div>	
+			<div class="form-group">
+				<label for="quantidadeSolicitacao"><p>Quantidade:</p></label><input type="form-control" class="form-control" id="quantidadeSolicitacao"></input>
+			</div>	
+			<div>	
+				<label for="statusSolicitacaol"><p>Status</p></label>
+				<select class="form-control" id="statusSolicitacaol">
+				<option>ABERTO</option>
+				<option>APROVADO</option>
+				<option>DESERTO</option>
+				<option>REQUISITADO</option>
+				</select>
+			</div>	
 
-				<div class="form-group">
-					<label for="justificativaSolicitacao"><p>Justificativa:</p></label>
-					<textarea type="form-control" class="form-control" id="justificativaSolicitacao"></textarea>
-				</div>
+			<div class="form-group">
+				<label for="descricaoSolicitacao"><p>Descricao:</p></label>
+				<textarea type="form-control" class="form-control" id="descricaoSolicitacao"></textarea>
+			</div>
 
-				<div class="form-group">
-						<label for="solicitanteSolicitacao"><p>Solicitante:</p></label>
-						<input type="form-control" class="form-control" id="solicitanteSolicitacao"></input>
-				</div>
-				</form>
+			<div class="form-group">
+				<label for="justificativaSolicitacao"><p>Justificativa:</p></label>
+				<textarea type="form-control" class="form-control" id="justificativaSolicitacao"></textarea>
+			</div>
 
-				<div class="container">
-						<table id="table" class="table">
-							<thead>
-								<tr>
-									<th scope="col" style="width:15%" id = "thData">Valor</th>
-									<th scope="col" style="width:50%" id = "thDescricao">Fornecedor</th>
-									<th scope="col" style="width:15%" id = "thStatus">Contato</th>
-								</tr>
-							</thead>
-							<tbody id="tabela-solicitacao">
-							</tbody>        
-						</table>
-						<script src="/js/req.js"></script>
-					</div>
+			<div class="form-group">
+					<label for="solicitanteSolicitacao"><p>Solicitante:</p></label>
+					<input type="form-control" class="form-control" id="solicitanteSolicitacao"></input>
+			</div>
+			
+			<div class="form-group">
+					<p>Orçamentos:</p>
+			</div>
 
-					<!-- Bootstrap JSs -->
-					<script src="/js/bootstrap.min.js"></script>
-					<!-- FontAwesome JS -->
-					<script src="/js/fontawesome-all.min.js"></script>
+			</form>
+			
 
-		</div>	
 
-<script src="/js/showSolicitacao.js"></script>
- <% include ../../views/partials/scripts %>
-  </body>
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col" style="width:15%" id = "thValor">Valor</th>
+					<th scope="col" style="width:20%" id = "thOrigem">Origem</th>
+					<th scope="col" style="width:30%" id = "thCnpj">CNPJ</th>
+					<th scope="col" style="width:35%" id = "thFornecedor">Fornecedor</th>
+				</tr>
+			</thead>
+			
+			<tbody id="tabela-solicitacao">
+			</tbody>        
+			
+		</table>
+		<script src="/js/showSolicitacao.js"></script>
+	</div>
 
+	<!-- Bootstrap JSs -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- FontAwesome JS -->
+	<script src="/js/fontawesome-all.min.js"></script>
+</div>			
+
+</body>
 </html>
