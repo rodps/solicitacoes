@@ -1,6 +1,7 @@
 .table{
 	width: 75%;
 	margin: auto;
+	margin-top: 0px;
     margin-bottom : .5em;
     table-layout: fixed;
 }
@@ -17,7 +18,7 @@ td, th {
 th{
 	font-weight: bold;
 	background-color: #363333;
-	color: blanchedalmond;
+	color: whitesmoke;
 }
 label{
 	color: #555;
@@ -47,7 +48,7 @@ button{
 	font-size: 1em;
 	font-weight: bold;
 	cursor: pointer;
-	color: blanchedalmond;
+	color: whitesmoke;
 	background-color:#363333;
 	border-color: black;
 	width: 12%;
@@ -74,6 +75,7 @@ h3{
 #navbarADM{
 	margin-bottom: 5%;
 }
+
 .info-close{
 	display: block;
 	margin: auto;
@@ -83,8 +85,20 @@ h3{
 	background-color: firebrick;
 }
 
-#addRequisicao{
+#addRequisicao, #newSolicitacao{
 	margin-left: 70.7%;
 	width: 10%;
 	font-size: 0.8em;
+}
+#criarReq{
+	margin-left: 19.5%;
+	margin-bottom: -3.3%
+}
+#listarReq{
+	margin-left: 20%;
+	margin-bottom: 0%
+}
+p{
+	font-family: "Arial Black", Gadget, sans-serif;
+	color: #363333;
 }
