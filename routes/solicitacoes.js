@@ -12,7 +12,7 @@ router.get("/", isLoggedIn, (req, res) => {
 router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("solicitacoes/adicionar");
 });
-router.get("/show", isLoggedIn, (req, res) => {
+router.get("/show", (req, res) => {
   res.render("solicitacoes/show");
 });
 
