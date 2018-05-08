@@ -4,6 +4,7 @@ var statusSolicitacao
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 var btdCarregar
+var btdModal
 
 xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
 xhr.addEventListener("load", function () {
@@ -15,7 +16,7 @@ xhr.addEventListener("load", function () {
 })
 xhr.send();
 
-var tabela = document.querySelector("table");
+var tabela = document.querySelector("#tabela-solicitacao");
 tabela.addEventListener("click", function (event) {
     row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
@@ -43,18 +44,27 @@ var requisicaoId = pos[5]
 
 btdCarregar = document.querySelector("#saveRequisicao");
 btdCarregar.addEventListener("click", function () {
-    if (listRequisicao.length != 0) {
+
         var json = JSON.stringify({ "solicitacoes": listRequisicao });
         var ajax = new XMLHttpRequest()
         ajax.open("POST", "http://localhost:3000/requisicoes/adicionar/solicitacao/" + pos[5])
         ajax.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         ajax.send(json)
         window.location.reload()
-    }
-    else {
-        document.getElementById("error").style.display = "block";
-    }
+
 })
+
+btdModal = document.querySelector("#saveSol");
+    btdModal.addEventListener("click",function(){
+        if(listRequisicao.length != 0){
+        $("#exampleModal").modal();
+        }
+        else{
+            document.getElementById("error").style.display = "block";
+        }
+})
+
+
 
 ///////////////////////////
 function addSolicitacaoNaTabela(solicitacao) {

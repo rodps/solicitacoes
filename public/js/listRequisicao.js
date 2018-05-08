@@ -14,7 +14,7 @@ xhr.addEventListener("load", function(){
 })
 xhr.send();
 
-var tabela = document.querySelector("table")
+var tabela = document.querySelector("#tabela-solicitacao")
 tabela.addEventListener("dblclick",function(event){
 
     var row = event.target.parentNode
