@@ -45,7 +45,6 @@ label{
 }
 
 button{
-	
 	margin-bottom: 0.5%;
 	margin-left: 68.8%;
 
@@ -129,4 +128,19 @@ h3{
 p{
 	font-family: "Arial Black", Gadget, sans-serif;
 	color: #363333;
+}
+
+#error{
+	margin-top: -5%; 
+	margin-bottom: 5%;
+	font-family: "Arial Black", Gadget, sans-serif;
+	color: aliceblue;
+}
+
+#addSolicitacaoReq{
+	margin-bottom: -5%;
+	margin-left: 19.8%;
+}
+#saveSol{
+	font-size: 0.9em;
 }

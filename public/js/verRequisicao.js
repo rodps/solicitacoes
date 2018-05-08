@@ -12,7 +12,6 @@ idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 var requisicaoId = pos[4]
 
-
 xhr.open("GET", "http://localhost:3000/requisicoes/listar/requisicoes_solicitacoes/" + pos[4]); //tipo de requisição + end.
 //xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/VerSolicitacao.json"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
@@ -21,12 +20,11 @@ xhr.addEventListener("load", function(){
     addSolicitacaoNaTabela(solicitacao);
 });
 })
-xhr.send();
 
+xhr.send();
 var idRequisicao = document.getElementById("viewReq").innerHTML += pos[4]
 
-
-var tabela = document.querySelector("table");
+var tabela = document.querySelector("#tabela-solicitacao");
 tabela.addEventListener("dblclick", function(event){  
     var row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent

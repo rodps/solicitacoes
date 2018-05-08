@@ -4,8 +4,11 @@ var statusSolicitacao
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 var btdCarregar
+var btdModal
 
 xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
+//xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/listSolicitacao.json"); //tipo de requisição + end.
+
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
@@ -15,7 +18,7 @@ xhr.addEventListener("load", function(){
 })
 xhr.send();
 
-var tabelaShow = document.querySelector("table");
+var tabelaShow = document.querySelector("#tabela-solicitacao");
 tabelaShow.addEventListener("dblclick", function(event){  
     var row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
@@ -24,7 +27,7 @@ tabelaShow.addEventListener("dblclick", function(event){
 
 
 
-var tabela = document.querySelector("table");
+var tabela = document.querySelector("#tabela-solicitacao");
 tabela.addEventListener("click", function(event){  
     row = event.target.parentNode
     idSolicitacao = row.lastChild.textContent
@@ -33,11 +36,13 @@ tabela.addEventListener("click", function(event){
     if(!listRequisicao.includes(idSolicitacao)){
         listRequisicao.push(idSolicitacao)
         row.classList.add("solicitacaoSelecionada")
+        //console.log(listRequisicao)
     }
     
     else{
         listRequisicao.pop(idSolicitacao)
         row.classList.remove("solicitacaoSelecionada")    
+        //console.log(listRequisicao)
     }
     
     console.log(listRequisicao)
@@ -48,17 +53,21 @@ tabela.addEventListener("click", function(event){
 
 btdCarregar = document.querySelector("#saveRequisicao");
     btdCarregar.addEventListener("click",function(){
-        if(listRequisicao.length != 0){
             var json = JSON.stringify({"solicitacoes" : listRequisicao});
             var ajax = new XMLHttpRequest()
             ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes")
             ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
             ajax.send(json)
             window.location.reload()
+})
+btdModal = document.querySelector("#saveReq");
+    btdModal.addEventListener("click",function(){
+        if(listRequisicao.length != 0){
+        $("#exampleModal").modal();
         }
         else{
             document.getElementById("error").style.display = "block";
-            }
+        }
 })
 
 ///////////////////////////
@@ -77,6 +86,7 @@ function montaTr(solicitacao){
     solicitacaoTr.appendChild(montaTd(solicitacao.descricao,    "info-descricao"    ));
     solicitacaoTr.appendChild(montaTd(solicitacao.status,       "info-status"       ));
     solicitacaoTr.appendChild(montaTd(solicitacao.usuario.nome, "info-solicitante"  ));
+    
     
     solicitacaoTr.appendChild(montaTd(solicitacao.id,           "info-id"           ));
 
