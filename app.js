@@ -1,16 +1,14 @@
-const express = require("express"),
-  bodyParser = require("body-parser"),
-  passport = require("passport"),
-  session = require("express-session"),
-  models = require("./models"),
-  middleware = require("./middleware"),
-  passportStrategies = require("./config/passport")(models.usuarios),
-  app = express(),
-  loginRouter = require("./routes/login"),
-  solicitacoesRouter = require("./routes/solicitacoes"),
-  produtosRouter = require("./routes/produtos"),
-  requisicoesRouter = require("./routes/requisicoes");
-  siorgRouter = require("./routes/siorg");
+const express            = require("express"),
+      bodyParser         = require("body-parser"),
+      passport           = require("passport"),
+      session            = require("express-session"),
+      models             = require("./models"),
+      middleware         = require("./middleware"),
+      passportStrategies = require("./config/passport")(models.usuarios),
+      loginRouter        = require("./routes/login"),
+      solicitacoesRouter = require("./routes/solicitacoes"),
+      moment             = require("moment"),
+      app                = express();
 
 
 // configuracoes
@@ -33,15 +31,14 @@ passport.deserializeUser(passportStrategies.deserialize);
 //rotas
 app.use("/", loginRouter);
 app.use("/solicitacoes", solicitacoesRouter);
-app.use("/produtos", produtosRouter);
-app.use("/requisicoes", requisicoesRouter);
-app.use("/siorg", siorgRouter);
 
+moment.locale('pt-br');
+app.locals.moment = moment;
 
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize
-  .sync()
+  .sync({force:true})
   .then(() => {
     console.log("Nice! Database looks fine");
     app.listen(3000, function(err) {
@@ -52,7 +49,3 @@ models.sequelize
   .catch(function(err) {
     console.log(err, "Algo deu errado com a database!");
   });
-
-app.get("/", middleware.isLoggedIn, function(req, res) {
-  res.render("index");
-});

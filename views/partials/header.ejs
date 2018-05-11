@@ -1,5 +1,34 @@
-<meta charset="UTF-8">
-<title>Warehouse</title>
-<link rel="stylesheet " type="text/css " href="/components/bootstrap/dist/css/bootstrap.min.css ">
-<link rel="stylesheet " type="text/css " href="/node_modules/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet " type="text/css " href="components/jquery/dist/jquery.min.js">
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a href="#" class="navbar-brand">Almoxarifado UTFPR</a>
+
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="/solicitacoes">Minhas Solicitações</a>
+			</li>
+		</ul>
+
+		<div class="input-group" style="width: 40%">
+				<div class="input-group-prepend">
+				    <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+				</div>
+			  <input type="search" class="form-control" placeholder="Procurar Solicitações">
+			</div>
+
+		<ul class="navbar-nav ml-auto">
+			<span class="navbar-text">User</span>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sair</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container-fluid">

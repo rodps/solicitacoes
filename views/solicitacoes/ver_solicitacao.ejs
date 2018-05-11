@@ -1,0 +1,35 @@
+<% var title = "Solicitação" %>
+<% include ../partials/header %>
+
+<!-- <h1 class="text-center">Solicitação #<%= solicitacao.id %></h1> -->
+
+<div class="container">
+<div class="float-right">
+  <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Excluir</button>
+  <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</button>
+</div>
+
+<a href="/solicitacoes">Voltar</a>
+<h3 class="my-3">Informações:</h3>
+
+<hr>
+<h6>Data:</h6>
+<p><%= moment(solicitacao.data).format('LLLL'); %></p>
+<h6>Descrição:</h6>
+<p><%= solicitacao.descricao %></p>
+<h6>Quantidade:</h6>
+<p><%= solicitacao.quantidade %></p>
+<h6>Justificativa:</h6>
+<p><%= solicitacao.justificativa %></p>
+<h6>Status:</h6>
+<p><%= solicitacao.status %></p>
+<hr>
+
+<button type="button" class="btn btn-success btn-sm float-right"><i class="fas fa-hand-holding-usd"></i> Adicionar Orçamento</button>
+<h3>Orçamento:</h3>
+<hr>
+<hr>
+
+</div>
+
+<% include ../partials/footer %>

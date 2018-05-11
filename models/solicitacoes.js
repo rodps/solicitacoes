@@ -8,7 +8,7 @@ function associate(models){
 
 module.exports = function(sequelize , DataTypes){
     var solicitacoes = sequelize.define('solicitacoes', {
-        descricao: DataTypes.STRING(500),
+        descricao: DataTypes.STRING(2000),
         status: DataTypes.ENUM('ABERTO','APROVADO','REQUISITADO','COMPRADO','DESERTO','CANCELADA'),
         quantidade: DataTypes.INTEGER,
         justificativa: DataTypes.STRING(500),

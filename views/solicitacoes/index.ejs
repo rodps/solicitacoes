@@ -1,39 +1,68 @@
-<html>
-<header></header>
-<% include ../../views/partials/header %>
+<% var title = "Nova Solicitação" %>
+<% include ../partials/header %>
 
-  <body>
-    <% include ../../views/partials/nav-bar %>
-      <div class="container">
-        <h2>Solicitações</h2>
+<div class="row">
+	<div class="col-md-2">
+		<hr>
+		<a href="/solicitacoes/new" class="btn btn-link"><i class="fas fa-file-alt"></i> Nova Solicitação</a>
+		<hr>
+		<form id="menu">
+			<legend class="col-form-label">Filtrar por status:</legend>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="check-aberto" name="aberto">
+			  <label class="custom-control-label" for="check-aberto">Em Aberto</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="check-aprovado" name="aprovado">
+			  <label class="custom-control-label" for="check-aprovado">Aprovado</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="check-requisitado" name="requisitado">
+			  <label class="custom-control-label" for="check-requisitado">Requisitado</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="check-comprado" name="comprado">
+			  <label class="custom-control-label" for="check-comprado">Comprado</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="check-deserto" name="deserto">
+			  <label class="custom-control-label" for="check-deserto">Deserto</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="check-cancelado" name="cancelado">
+			  <label class="custom-control-label" for="check-cancelado">Cancelado</label>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-10">
+		<% if(solicitacoes === undefined || solicitacoes.length == 0) { %>
+		<div class="my-5" style="">
+			<i class="fas fa-search" style="font-size: 3rem; text-align: center; width: 100%"></i>
+			<h5 class="text-center">Nenhuma solicitação encontrada.</h5>
+		</div>
+		<% } else { %>
+		<table class="table table-hover table-bordered my-3 text-center">
+			<thead>
+			    <tr>
+			      <th scope="col">Data</th>
+			      <th scope="col">Descricao</th>
+			      <th scope="col">Quantidade</th>
+			      <th scope="col">Status</th>
+			    </tr>
+			</thead>
+			<tbody>
+			<% solicitacoes.forEach((solicitacao) => { %>
+				    <tr data-href="/solicitacoes/<%= solicitacao.id %>">
+				      <td><%= moment(solicitacao.data).calendar() %></td>
+				      <th><%= solicitacao.descricao.substring(0, 80) %></th>
+				      <td><%= solicitacao.quantidade %></td>
+				      <td>Em Aberto</td>
+				    </tr>
+			<% }) %>
+			</tbody>
+		</table>
+		<% }%>
+	</div>
+</div>
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Produto</th>
-              <th>Quantidade</th>
-              <th>Justificativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% _solicitacoes.forEach((solicitacao) => { %>
-              <tr>
-                <td>
-                  <%= solicitacao.produto.descricao %>
-                </td>
-                <td>
-                  <%= solicitacao.quantidade_produto %>
-                </td>
-                <td>
-                  <%= solicitacao.justificativa %>
-                </td>
-              </tr>
-              <% }); %>
-
-          </tbody>
-        </table>
-      </div>
-      <% include ../../views/partials/scripts %>
-  </body>
-
-</html>
+<% include ../partials/footer %>
