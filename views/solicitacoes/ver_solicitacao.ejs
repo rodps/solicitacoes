@@ -28,6 +28,34 @@
 <a href="/solicitacoes/<%= solicitacao.id %>/orcamentos/edit" class="btn btn-success btn-sm float-right"><i class="fas fa-hand-holding-usd"></i> Editar Orçamento</a>
 <h3>Orçamento:</h3>
 <hr>
+
+
+<table class="table table-bordered table-sm my-3 text-center align-middle">
+  <thead>
+      <tr>
+        <th scope="col">CNPJ</th>
+        <th scope="col">Fornecedor</th>
+        <th scope="col">Valor R$</th>
+        <th scope="col">Referencia</th>
+        <th scope="col">Arquivo</th>
+      </tr>
+  </thead>
+  <tbody>
+  <% if(!(orcamentos === undefined || orcamentos.length == 0)) { %>
+    <% orcamentos.forEach((orcamento) => { %>
+    <tr>
+      <td><%= orcamento.cnpj_fornecedor %></td>
+      <td><%= orcamento.nome_fornecedor %></td>
+      <td><%= orcamento.valor %></td>
+      <td><%= orcamento.origem %></td>
+      <td></td>
+    </tr>
+    <% }) %>
+  <% } %>
+  </tbody>
+</table>
+
+
 <hr>
 
 </div>

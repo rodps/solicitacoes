@@ -10,7 +10,7 @@
 	    <tr>
 	      <th scope="col">CNPJ</th>
 	      <th scope="col">Fornecedor</th>
-	      <th scope="col">Valor</th>
+	      <th scope="col">Valor R$</th>
 	      <th scope="col">Referencia</th>
 	      <th scope="col">Arquivo</th>
 	      <th scope="col">Remover</th>
@@ -32,8 +32,12 @@
 	</tbody>
 </table>
 
+<p>Preço médio unitário: <span id="preco-medio"></span> R$</p>
+<p>Preço mínimo aceitável: <span id="preco-minimo"></span> R$</p>
+<p>Preço máximo aceitável: <span id="preco-maximo"></span> R$</p>
+
 <div>
-	<a href="/solicitacoes/<%= orcamentos.id_solicitacao %>" class="btn btn-link">Cancelar</a>
+	<a href="/solicitacoes/<%= solicitacao_id %>" class="btn btn-link">Cancelar</a>
 	<button type="submit" class="btn btn-primary" id="save-orcamento"><i class="fas fa-save"></i> Salvar</button>
 </div>
 
