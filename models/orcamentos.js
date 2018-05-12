@@ -10,7 +10,7 @@ module.exports = function(sequelize , DataTypes){
     var orcamentos = sequelize.define('orcamentos', {
         origem: DataTypes.STRING,
         valor: DataTypes.FLOAT,
-        cnpj_forncedor: DataTypes.STRING,
+        cnpj_fornecedor: DataTypes.STRING,
         nome_fornecedor: DataTypes.STRING,
     }, {timestamps: false});
 

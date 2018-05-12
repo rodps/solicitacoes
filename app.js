@@ -38,7 +38,7 @@ app.locals.moment = moment;
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize
-  .sync({force:true})
+  .sync()
   .then(() => {
     console.log("Nice! Database looks fine");
     app.listen(3000, function(err) {
@@ -49,3 +49,11 @@ models.sequelize
   .catch(function(err) {
     console.log(err, "Algo deu errado com a database!");
   });
+
+app.get("/backend/solicitacoes/:id/orcamentos", (req, res) => {
+  models.orcamentos.findAll({
+    where: {solicitacao_id: req.params.id}
+  }).then((orcamentos) => {
+    res.send(JSON.stringify(orcamentos));
+  });
+});

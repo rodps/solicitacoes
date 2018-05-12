@@ -52,7 +52,7 @@
 			</thead>
 			<tbody>
 			<% solicitacoes.forEach((solicitacao) => { %>
-				    <tr data-href="/solicitacoes/<%= solicitacao.id %>">
+				    <tr class="tr-clickable" data-href="/solicitacoes/<%= solicitacao.id %>">
 				      <td><%= moment(solicitacao.data).calendar() %></td>
 				      <th><%= solicitacao.descricao.substring(0, 80) %></th>
 				      <td><%= solicitacao.quantidade %></td>

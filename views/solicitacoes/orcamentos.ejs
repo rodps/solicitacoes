@@ -1,0 +1,94 @@
+<% var title = "Orçamentos" %>
+<% include ../partials/header %>
+
+<div class="container">
+
+<h1>Orçamento</h1>
+
+<table class="table table-bordered my-3 text-center align-middle">
+	<thead>
+	    <tr>
+	      <th scope="col">CNPJ</th>
+	      <th scope="col">Fornecedor</th>
+	      <th scope="col">Valor</th>
+	      <th scope="col">Referencia</th>
+	      <th scope="col">Arquivo</th>
+	      <th scope="col">Remover</th>
+	    </tr>
+	</thead>
+	<tbody>
+	<% if(!(orcamentos === undefined || orcamentos.length == 0)) { %>
+		<% orcamentos.forEach((orcamento) => { %>
+		<tr>
+			<td><%= orcamento.cnpj_fornecedor %></td>
+			<td><%= orcamento.nome_fornecedor %></td>
+			<td><%= orcamento.valor %></td>
+			<td><%= orcamento.origem %></td>
+			<td></td>
+			<td><button class='btn btn-danger btn-sm delete-row' data-toggle='modal' data-target='#modal-delete'><i class='fas fa-trash-alt'></i></button></td>
+		</tr>
+		<% }) %>
+	<% } %>
+	</tbody>
+</table>
+
+<div>
+	<a href="/solicitacoes/<%= orcamentos.id_solicitacao %>" class="btn btn-link">Cancelar</a>
+	<button type="submit" class="btn btn-primary" id="save-orcamento"><i class="fas fa-save"></i> Salvar</button>
+</div>
+
+<hr>
+
+	<fieldset>
+	<h3 class="my-3">Novo Orçamento: </h3>
+	<div class="form-row">
+		<div class="form-group col-md-4">
+			<label for="cnpj">CNPJ do fornecedor:</label>
+			<input type="text" class="form-control" id="cnpj" name="cnpj_fornecedor" placeholder="CNPJ">
+		</div>
+		<div class="form-group col-md-5">
+			<label for="nome">Nome do fornecedor:</label>
+			<input type="text" class="form-control" id="nome" name="nome_fornecedor" placeholder="Nome">
+		</div>
+		<div class="form-group col-md-3">
+			<label for="valor">Valor:</label>
+			<input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" min=0>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-7">
+			<label for="ref">Referencia:</label>
+			<input type="text" class="form-control" id="ref" name="ref" placeholder="URL">
+		</div>
+		<div class="form-group col-md-5">
+			<label for="pdf">PDF:</label>
+			<input type="file" class="form-control" id="pdf">
+		</div>
+	</div>
+	<button id="add-orcamento" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
+	</fieldset>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Remover</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Deseja mesmo remover?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="confirm-delete" class="btn btn-danger" data-dismiss="modal">Sim</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>
