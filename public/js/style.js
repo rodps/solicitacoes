@@ -26,6 +26,7 @@ $.getJSON( "/backend/solicitacoes/"+pathname.split('/')[2]+"/orcamentos", data =
 			valor: $("#valor").val(),
 			origem: $("#ref").val()
 		});
+		console.log(orcamento);
 		if (orcamento.length >= 5) {
 			$(this).removeClass("btn-success");
 			$(this).addClass("btn-disabled");
@@ -70,8 +71,9 @@ $.getJSON( "/backend/solicitacoes/"+pathname.split('/')[2]+"/orcamentos", data =
 	        success: function(data) {
 	            console.log("Successfully saved the matched beans to the user.");
 	        }
-	    }).done(function ( ) {
+	    }).done(function () {
 	        console.log("OK");
+	        window.location.replace(window.location.href.slice(0, -15));
 	    }).fail(function ( jqXHR, textStatus, errorThrown ) {
 	        console.log(jqXHR);
 	        console.log(textStatus);

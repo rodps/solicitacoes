@@ -45,6 +45,7 @@ router.get("/:id/orcamentos/edit", (req, res) => {
 
 router.post("/:id/orcamentos", (req, res) => {
 	var orcamentos =  req.body;
+	console.log(orcamentos);
 	models.orcamentos
 		.destroy({
 			where: {solicitacao_id: req.params.id}
@@ -52,16 +53,14 @@ router.post("/:id/orcamentos", (req, res) => {
 		.then(() => {
 			orcamentos.forEach((orcamento) => {
 				models.orcamentos.create({
-					origem: orcamento.ref,
+					origem: orcamento.origem,
 					valor: orcamento.valor,
 					cnpj_fornecedor: orcamento.cnpj_fornecedor,
 					nome_fornecedor: orcamento.nome_fornecedor,
 					solicitacao_id: req.params.id
 				})
-			})
-		})
-		.then(() => {
-			res.redirect("/solicitacoes/" + req.params.id + "/orcamentos");
+			});
+			res.status(200).send("ok");
 		});
 });
 
